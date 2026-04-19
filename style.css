@@ -1,17 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-* {
+*, *::before, *::after {
+    box-sizing: border-box;
     font-family: "Inter", sans-serif;
     cursor: url("/images/cursor.png"), pointer;
 }
 
 html {
     scroll-behavior: smooth;
-}
-
-section {
-    min-height: 100vh;
-    padding: 80px 40px;
+    overflow-x: hidden;
 }
 
 body {
@@ -19,6 +16,13 @@ body {
     padding: 0;
     background-color: #0A0E1A;
     overflow-x: hidden;
+}
+
+section {
+    min-height: 100vh;
+    padding: 80px 5vw;
+    box-sizing: border-box;
+    max-width: 100%;
 }
 
 body::before {
@@ -159,9 +163,10 @@ body::before {
     flex-direction: column;
     justify-content: center;
     min-height: 85vh;
-    padding: 0 10vw;
+    padding: 80px 5vw;
     position: relative;
     z-index: 1;
+    box-sizing: border-box;
 }
 
 .accueil-tag {
@@ -1065,6 +1070,14 @@ body::before {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+.burger {
+    display: none;
+}
+
+.mobile-menu {
+    display: none;
 }
 
 /* ===== TABLETTE ===== */
