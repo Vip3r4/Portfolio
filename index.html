@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vip3r Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="/images/developer-icon.svg">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="/images/developer-icon.svg" alt="logo">
+            <div>
+                <h2>Vip3r</h2>
+                <span>Portfolio</span>
+            </div>
+        </div>
+        <ul>
+            <li><a href="#accueil" class="active">Accueil</a></li>
+            <li><a href="#projets">Projets</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#competences">Compétences</a></li>
+            <li><a href="#apropos">À Propos</a></li>
+        </ul>
+        <div class="navbar-right">
+            <button class="lang-switch" id="langSwitch">EN</button>
+            <a class="navbar-cta" href="#contact">Me Contacter</a>
+        </div>
+    </nav>
+
+    <section id="accueil" class="accueil">
+        <p class="accueil-tag">Bonjour, je suis</p>
+        <h1>Vip3r</h1>
+        <h2>Développeur Web & C# spécialisé serveurs de jeu</h2>
+        <p class="accueil-desc">
+            Je crée des sites, dashboards et plugins pour les 
+            communautés de jeu - SCP:SL, FiveM, et plus encore.
+        </p>
+        <div class="accueil-btns">
+            <a href="#projets" class="btn-primary">Voir mes projets</a>
+            <a href="#contact" class="btn-secondary">Me contacter</a>
+        </div>
+        <div class="accueil-socials">
+            <a href="https://github.com/Vip3r4" target="_blank">GitHub</a>
+            <a href="https://discord.com/users/844252586403299338" target="_blank">Discord</a>
+        </div>
+    </section>
+    <section id="projets" class="projets fade-in">
+        <h2>Mes Projets</h2>
+        <p class="projets-desc">
+            Chaque projet est conçu sur mesure pour répondre 
+            aux besoins réels d'une communauté ou des membres du staff.
+            Voilà ce que j'ai construit.
+        </p>
+        <div class="projets-cards-container">
+            <div class="projets-card fade-in">
+                <div class="projets-card-header">
+                    <span class="projets-card-tag">SCP:SL</span>
+                    <div class="projets-card-links">
+                        <a href="https://sitedeltadarkrp.fr" target="_blank">Live →</a>
+                    </div>
+                </div>
+                <h3>Site Web Fondation Delta No RP</h3>
+                <p>
+                    Site vitrine pour mon serveur No RP sur SCP:SL - 
+                    wiki, dev-logs, contact, et page à propos.
+                </p>
+                <div class="projets-card-techs">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+                <div class="projets-card-tools">
+                    <span>Visual Studio Code</span>
+                    <span>Github</span>
+                    <span>Netlify</span>
+                    <span>OVH Cloud</span>
+                </div>
+            </div>
+            <div class="projets-card fade-in">
+                <div class="projets-card-header">
+                    <span class="projets-card-tag">FiveM</span>
+                    <div class="projets-card-links">
+                        <a href="https://github.com/Vip3r4/FlashiceRPMotorCoFiveM/" target="_blank">GitHub →</a>
+                    </div>
+                </div>
+                <h3>Site Web Motor Co. FiveM</h3>
+                <p>
+                    Site vitrine pour un concessionnaire automobile sur FiveM - 
+                    catalogue, contact, page à propos et panel admin avec 
+                    connexion pour gérer les véhicules sans toucher au code.
+                </p>
+                <div class="projets-card-techs">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+                <div class="projets-card-tools">
+                    <span>Visual Studio Code</span>
+                    <span>Github</span>
+                    <span>Google Firebase</span>
+                </div>
+            </div>
+            <div class="projets-card fade-in">
+                <div class="projets-card-header">
+                    <span class="projets-card-tag">SCP:SL</span>
+                    <div class="projets-card-links">
+                        <a href="https://github.com/Vip3r4/Site-Delta-Dark-RP" target="_blank">GitHub →</a>
+                    </div>
+                </div>
+                <h3>Plugin Site Delta DarkRP</h3>
+                <p>
+                    Plugin qui rajoute de nombreuses fonctionnalités pour un
+                    DarkRP, confinement de SCP, respawn contrôlés etc..
+                </p>
+                <div class="projets-card-techs">
+                    <span>C#</span>
+                    <span>Framework : Exiled</span>
+                </div>
+                <div class="projets-card-tools">
+                    <span>Visual Studio 2022</span>
+                    <span>Github</span>
+                </div>
+            </div>
+            <div class="projets-card fade-in">
+                <div class="projets-card-header">
+                    <span class="projets-card-tag">SCP:SL</span>
+                </div>
+                <h3>Plugin Fondation Delta NoRP</h3>
+                <p>
+                    Plugin qui rajoute de nombreuses fonctionnalités pour un
+                    NoRP, commandes admin et joueur, custom items, custom roles,
+                    intégration PMer etc..
+                </p>
+                <div class="projets-card-techs">
+                    <span>C#</span>
+                    <span>Framework : Exiled</span>
+                </div>
+                <div class="projets-card-tools">
+                    <span>JetBrains Rider 2025</span>
+                    <span>Github</span>
+                </div>
+            </div>
+            <div class="projets-card fade-in">
+                <div class="projets-card-header">
+                    <span class="projets-card-tag">SCP:SL</span>
+                    <div class="projets-card-links">
+                        <a href="https://github.com/Vip3r4/InfernoDarkRP" target="_blank">GitHub →</a>
+                    </div>
+                </div>
+                <h3>Plugin Inferno DarkRP</h3>
+                <p>
+                    Plugin qui rajoute de nombreuses fonctionnalités pour un
+                    DarkRP, confinement de SCP, respawn contrôlés etc..
+                </p>
+                <div class="projets-card-techs">
+                    <span>C#</span>
+                    <span>Framework : Exiled</span>
+                </div>
+                <div class="projets-card-tools">
+                    <span>Visual Studio 2022</span>
+                    <span>Github</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="services" class="services fade-in">
+        <h2>Services</h2>
+        <p class="services-desc">
+            Des solutions sur mesure pour les communautés de jeu qui veulent 
+            se démarquer et offrir une vraie expérience à leurs joueurs.
+        </p>
+        <div class="services-cards-container">
+            <div class="services-card fade-in">
+                <div class="services-card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                </div>
+                <div class="services-card-tag">Web</div>
+                <h3>Site Vitrine + Dashboard</h3>
+                <p>Un site sur mesure pour présenter ta communauté avec un panel d'administration pour gérer ton contenu sans toucher au code.</p>
+                <div class="services-card-footer">
+                    <span class="services-card-delay">⏱ 2 à 3 semaines</span>
+                    <a href="#contact" class="services-card-cta">Me contacter</a>
+                </div>
+            </div>
+            <div class="services-card fade-in">
+                <div class="services-card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                    </svg>
+                </div>
+                <div class="services-card-tag scp">SCP:SL</div>
+                <h3>Plugin Exiled</h3>
+                <p>Développement de plugins sur mesure pour ton serveur SCP:SL - rôles et items custom, commandes staff et joueurs ou tout ce dont ta communauté a besoin.</p>
+                <div class="services-card-footer">
+                    <span class="services-card-delay">⏱ 1 à 2 semaines</span>
+                    <a href="#contact" class="services-card-cta">Me contacter</a>
+                </div>
+            </div>
+            <div class="services-card services-card-featured fade-in">
+                <div class="services-card-badge">Populaire</div>
+                <div class="services-card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/>
+                        <line x1="10" y1="12" x2="14" y2="12"/>
+                    </svg>
+                </div>
+                <div class="services-card-tag">Pack</div>
+                <h3>Pack Complet</h3>
+                <p>Site vitrine + dashboard + plugin Exiled. Une solution clé en main pour donner à ta communauté une vraie identité et des outils adaptés.</p>
+                <div class="services-card-footer">
+                    <span class="services-card-delay">⏱ 3 à 5 semaines</span>
+                    <a href="#contact" class="services-card-cta">Me contacter</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="competences" class="competences fade-in">
+        <h2>Compétences</h2>
+        <p class="competences-desc">
+            Les technologies et outils que j'utilise au quotidien pour 
+            construire des projets solides et maintenables.
+        </p>
+        <div class="competences-grid">
+
+            <div class="competences-category fade-in">
+                <h3>Langages</h3>
+                <div class="competences-list">
+                    <div class="competence-item">
+                        <span class="competence-dot"></span>
+                        HTML
+                    </div>
+                    <div class="competence-item">
+                        <span class="competence-dot"></span>
+                        CSS
+                    </div>
+                    <div class="competence-item">
+                        <span class="competence-dot"></span>
+                        JavaScript
+                    </div>
+                    <div class="competence-item">
+                        <span class="competence-dot"></span>
+                        C#
+                    </div>
+                </div>
+            </div>
+
+            <div class="competences-category fade-in">
+                <h3>Frameworks</h3>
+                <div class="competences-list">
+                    <div class="competence-item">
+                        <span class="competence-dot scp"></span>
+                        Exiled
+                    </div>
+                    <div class="competence-item">
+                        <span class="competence-dot"></span>
+                        React
+                    </div>
+                    <div class="competence-item">
+                        <span class="competence-dot"></span>
+                        Tailwind CSS
+                    </div>
+                </div>
+            </div>
+
+            <div class="competences-category fade-in">
+                <h3>Outils</h3>
+                <div class="competences-list">
+                    <div class="competence-item">
+                        <span class="competence-dot"></span>
+                        VS Code
+                    </div>
+                    <div class="competence-item">
+                        <span class="competence-dot"></span>
+                        Visual Studio
+                    </div>
+                    <div class="competence-item">
+                        <span class="competence-dot"></span>
+                        Rider
+                    </div>
+                    <div class="competence-item">
+                        <span class="competence-dot"></span>
+                        Firebase
+                    </div>
+                    <div class="competence-item">
+                        <span class="competence-dot"></span>
+                        GitHub
+                    </div>
+                    <div class="competence-item">
+                        <span class="competence-dot"></span>
+                        Netlify
+                    </div>
+                </div>
+            </div>
+
+            <div class="competences-category fade-in">
+                <h3>Univers jeu</h3>
+                <div class="competences-list">
+                    <div class="competence-item">
+                        <span class="competence-dot fivem"></span>
+                        FiveM
+                    </div>
+                    <div class="competence-item">
+                        <span class="competence-dot scp"></span>
+                        SCP:Secret Laboratory
+                    </div>
+                    <div class="competence-item">
+                        <span class="competence-dot mc"></span>
+                        Minecraft
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section id="apropos" class="apropos fade-in">
+        <h2>À Propos</h2>
+        <div class="apropos-cards-container">
+
+            <div class="apropos-card fade-in">
+                <div class="apropos-card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </div>
+                <h3>Qui suis-je ?</h3>
+                <p>Autodidacte de 16 ans spécialisé dans les communautés de jeu. 
+                    Lancé dans le code grâce à un ami, je me suis formé seul sur 
+                    le web et le C# pour construire des outils concrets pour les 
+                    serveurs SCP:SL et FiveM.</p>
+            </div>
+
+            <div class="apropos-card fade-in">
+                <div class="apropos-card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                        <line x1="1" y1="10" x2="23" y2="10"/>
+                    </svg>
+                </div>
+                <h3>Paiement</h3>
+                <p>Un acompte de 30% est demandé avant le début du développement 
+                    pour sécuriser le temps et le travail, le reste juste avant la livraison,
+                    après la démonstration. 
+                    Le prix est défini ensemble avant de commencer, pas de mauvaise surprise.</p>
+                <div class="apropos-card-tags">
+                    <span>PayPal</span>
+                    <span>Virement</span>
+                </div>
+            </div>
+
+            <div class="apropos-card fade-in">
+                <div class="apropos-card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                    </svg>
+                </div>
+                <h3>Support & Maintenance</h3>
+                <p>Après la livraison, je reste disponible pour corriger 
+                    les bugs et répondre à tes questions. Les mises à jour 
+                    majeures ou nouvelles fonctionnalités font l'objet d'un 
+                    nouveau devis. J'essaye en général de créer des panels
+                    qui permettent l'ajout de contenu supplémentaire manuellement
+                    sans repasser par mes services.
+                </p>
+                <div class="apropos-card-tags">
+                    <span>Bugs corrigés</span>
+                    <span>Suivi Discord</span>
+                    <span>Durable</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section id="contact" class="contact fade-in">
+        <h2>Me Contacter</h2>
+        <p class="contact-desc">
+            Une idée, un projet ou une question ? Envoie moi un message 
+            et je te réponds dans les plus brefs délais.
+        </p>
+        <div class="contact-container">
+            <div class="contact-infos">
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.03.056a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="contact-info-label">Discord</p>
+                        <p class="contact-info-value">vip3r_</p>
+                    </div>
+                </div>
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="contact-info-label">GitHub</p>
+                        <a href="https://github.com/Vip3r4" target="_blank" class="contact-info-value">github.com/Vip3r4</a>
+                    </div>
+                </div>
+            </div>
+
+            <form class="contact-form" action="https://formspree.io/f/maqabnkg" method="POST">
+                <div class="contact-form-row">
+                    <div class="contact-form-group">
+                        <label for="nom">Nom / Pseudo</label>
+                        <input type="text" id="nom" name="nom" placeholder="Ton nom ou pseudo" required>
+                    </div>
+                    <div class="contact-form-group">
+                        <label for="sujet">Sujet</label>
+                        <select id="sujet" name="sujet" required>
+                            <option value="" disabled selected>Choisir...</option>
+                            <option value="Site vitrine + Dashboard">Site vitrine + Dashboard</option>
+                            <option value="Plugin Exiled">Plugin Exiled</option>
+                            <option value="Pack complet">Pack complet</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="contact-form-group">
+                    <label for="discord">Tag Discord</label>
+                    <input type="text" id="discord" name="discord" placeholder="ton_tag#0000">
+                </div>
+                <div class="contact-form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Décris ton projet, tes besoins..." required></textarea>
+                </div>
+                <button type="submit" class="contact-submit">Envoyer le message</button>
+            </form>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="/images/developer-icon.svg" alt="logo">
+                    <div>
+                        <h2>Vip3r</h2>
+                        <span>Portfolio</span>
+                    </div>
+                </div>
+                <p class="footer-desc">
+                    Développeur web & C# spécialisé dans les communautés de jeu.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#projets">Projets</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#competences">Compétences</a></li>
+                    <li><a href="#apropos">À Propos</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Liens</h3>
+                <ul>
+                    <li><a href="https://github.com/Vip3r4" target="_blank">GitHub</a></li>
+                    <li><a href="#contact">Discord</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Conçu & développé par <span>Vip3r</span></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
