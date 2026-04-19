@@ -337,3 +337,18 @@ langSwitch.addEventListener('click', () => {
     langSwitch.textContent = currentLang === 'FR' ? 'EN' : 'FR';
     applyTranslations(currentLang);
 });
+
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+});
+
+mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        burger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+    });
+});
