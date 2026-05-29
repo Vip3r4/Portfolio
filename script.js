@@ -34,140 +34,111 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-class LogoLoop {
-    constructor(element) {
-        this.container = element;
-        this.track = element.querySelector('.logoloop__track');
-        this.originalList = element.querySelector('.logoloop__list');
-        
-        if (!this.container || !this.track || !this.originalList) return;
+/* ---------------------------------------- */
 
-        this.speed = parseFloat(this.container.getAttribute('data-speed')) || 120;
-        this.direction = this.container.getAttribute('data-direction') || 'left';
-        this.gap = parseInt(this.container.getAttribute('data-gap')) || 32;
-        this.logoHeight = parseInt(this.container.getAttribute('data-logo-height')) || 28;
-        this.fadeColor = this.container.getAttribute('data-fade-color');
-        this.hoverSpeed = 0;
-
-        this.isVertical = this.direction === 'up' || this.direction === 'down';
-        this.isHovered = false;
-        
-        this.offset = 0;
-        this.velocity = 0;
-        this.lastTimestamp = null;
-        this.rafId = null;
-        this.seqSize = 0;
-
-        this.init();
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('customLogoLoop');
+    const track = document.getElementById('customTrack');
+    const originalList = document.getElementById('customOriginalList');
+    
+    if (!container || !track || !originalList) {
+        console.error('Elements not found');
+        return;
     }
-
-    init() {
-        this.container.style.setProperty('--logoloop-gap', `${this.gap}px`);
-        this.container.style.setProperty('--logoloop-logoHeight', `${this.logoHeight}px`);
-        if (this.fadeColor) {
-            this.container.style.setProperty('--logoloop-fadeColor', this.fadeColor);
-        }
-
-        const magnitude = Math.abs(this.speed);
-        const directionMultiplier = this.isVertical 
-            ? (this.direction === 'up' ? 1 : -1) 
-            : (this.direction === 'left' ? 1 : -1);
-        this.targetVelocity = magnitude * directionMultiplier;
-
-        this.waitForImages().then(() => {
-            this.setupCopies();
-            this.startAnimation();
-            
-            window.addEventListener('resize', () => this.setupCopies());
-            this.track.addEventListener('mouseenter', () => this.isHovered = true);
-            this.track.addEventListener('mouseleave', () => this.isHovered = false);
-        });
-    }
-
-    waitForImages() {
-        const images = this.originalList.querySelectorAll('img');
-        if (images.length === 0) return Promise.resolve();
-
-        const promises = Array.from(images).map(img => {
-            if (img.complete) return Promise.resolve();
-            return new Promise(resolve => {
-                img.addEventListener('load', resolve, { once: true });
-                img.addEventListener('error', resolve, { once: true });
-            });
-        });
-        return Promise.all(promises);
-    }
-
-    setupCopies() {
-        const lists = this.track.querySelectorAll('.logoloop__list');
+    
+    const speed = 40;
+    const gap = 60;
+    
+    originalList.style.gap = gap + 'px';
+    
+    let animationId = null;
+    let position = 0;
+    let lastTimestamp = null;
+    let isHovered = false;
+    let totalWidth = 0;
+    
+    function setupCopies() {
+        const lists = track.querySelectorAll('.custom-logo-list');
         lists.forEach((list, index) => {
             if (index > 0) list.remove();
         });
-
-        const rect = this.originalList.getBoundingClientRect();
-        this.seqSize = Math.ceil(this.isVertical ? rect.height : rect.width);
         
-        if (this.seqSize <= 0) {
-            setTimeout(() => this.setupCopies(), 100);
+        originalList.style.visibility = 'visible';
+        
+        const listWidth = originalList.offsetWidth;
+        if (listWidth === 0) {
+            setTimeout(setupCopies, 100);
             return;
         }
-
-        const containerSize = this.isVertical 
-            ? (this.container.parentElement?.clientHeight || window.innerHeight)
-            : this.container.clientWidth;
-
-        if (this.isVertical && this.container.parentElement) {
-            this.container.style.height = `${this.container.parentElement.clientHeight}px`;
-        }
-
-        const copiesNeeded = Math.max(2, Math.ceil(containerSize / this.seqSize) + 2);
-
+        
+        const containerWidth = container.offsetWidth;
+        const copiesNeeded = Math.ceil(containerWidth / listWidth) + 4;
+        
         for (let i = 1; i < copiesNeeded; i++) {
-            const clone = this.originalList.cloneNode(true);
-            clone.setAttribute('aria-hidden', 'true');
-            this.track.appendChild(clone);
+            const clone = originalList.cloneNode(true);
+            clone.id = '';
+            track.appendChild(clone);
+        }
+        
+        const firstList = track.querySelector('.custom-logo-list');
+        if (firstList) {
+            totalWidth = firstList.offsetWidth;
+        }
+        
+        position = 0;
+        if (track) {
+            track.style.transform = `translateX(0px)`;
         }
     }
-
-    startAnimation() {
-        const animate = (timestamp) => {
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                return;
+    
+    function animate(currentTime) {
+        if (!animationId) return;
+        
+        if (!lastTimestamp) {
+            lastTimestamp = currentTime;
+            requestAnimationFrame(animate);
+            return;
+        }
+        
+        let deltaTime = Math.min(0.033, (currentTime - lastTimestamp) / 1000);
+        lastTimestamp = currentTime;
+        
+        if (!isHovered && totalWidth > 0) {
+            position -= speed * deltaTime;
+            
+            if (Math.abs(position) >= totalWidth) {
+                position = position + totalWidth;
             }
-
-            if (this.lastTimestamp === null) {
-                this.lastTimestamp = timestamp;
-            }
-
-            const deltaTime = Math.min(0.033, (timestamp - this.lastTimestamp) / 1000);
-            this.lastTimestamp = timestamp;
-
-            const target = this.isHovered ? this.hoverSpeed : this.targetVelocity;
-            const easingFactor = 1 - Math.exp(-deltaTime / 0.25);
-            this.velocity += (target - this.velocity) * easingFactor;
-
-            if (this.seqSize > 0) {
-                this.offset += this.velocity * deltaTime;
-                
-                if (Math.abs(this.offset) >= this.seqSize) {
-                    this.offset = this.offset % this.seqSize;
-                }
-
-                const transformValue = this.isVertical
-                    ? `translate3d(0, ${-this.offset}px, 0)`
-                    : `translate3d(${-this.offset}px, 0, 0)`;
-                this.track.style.transform = transformValue;
-            }
-
-            this.rafId = requestAnimationFrame(animate);
-        };
-
-        this.rafId = requestAnimationFrame(animate);
+            
+            track.style.transform = `translateX(${position}px)`;
+        }
+        
+        requestAnimationFrame(animate);
     }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.logoloop').forEach(el => new LogoLoop(el));
+    
+    container.addEventListener('mouseenter', function() {
+        isHovered = true;
+    });
+    
+    container.addEventListener('mouseleave', function() {
+        isHovered = false;
+        lastTimestamp = null;
+    });
+    
+    setupCopies();
+    
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            position = 0;
+            setupCopies();
+        }, 200);
+    });
+    
+    animationId = true;
+    lastTimestamp = null;
+    requestAnimationFrame(animate);
 });
 
 /* ---------------------------------------- */
