@@ -632,6 +632,10 @@ body::before {
     --logoloop-fadeColorAuto: #0A0E1A;
 }
 
+.logoloop--horizontal {
+    width: 100%;
+}
+
 .logoloop--vertical {
     height: 100%;
     display: inline-block;
@@ -690,13 +694,13 @@ body::before {
     display: block;
     object-fit: contain;
     -webkit-user-drag: none;
-    pointer-events: none;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logoloop--scale-hover .logoloop__item {
     overflow: visible;
 }
+
 .logoloop--scale-hover .logoloop__item:hover img,
 .logoloop--scale-hover .logoloop__item:hover svg {
     transform: scale(1.2);
