@@ -87,7 +87,7 @@ const translations = {
 
         // Compétences
         competences_h2: 'Compétences',
-        competences_desc: 'Les technologies et outils que j\'utilise au quotidien pour construire des projets solides et maintenables.',
+        competences_desc: 'Les languages et stacks que j\'utilise au quotidien pour construire des projets solides et maintenables.',
         comp_langages: 'Langages',
         comp_frameworks: 'Frameworks',
         comp_outils: 'Outils',
@@ -174,7 +174,7 @@ const translations = {
 
         // Compétences
         competences_h2: 'Skills',
-        competences_desc: 'The technologies and tools I use daily to build solid and maintainable projects.',
+        competences_desc: 'The languages and stacks I use daily to build solid and maintainable projects.',
         comp_langages: 'Languages',
         comp_frameworks: 'Frameworks',
         comp_outils: 'Tools',
