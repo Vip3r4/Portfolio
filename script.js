@@ -34,6 +34,143 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+class VanillaLogoLoop {
+    constructor(element) {
+        this.container = element;
+        this.track = element.querySelector('.logoloop__track');
+        this.originalList = element.querySelector('.logoloop__list');
+        
+        if (!this.container || !this.track || !this.originalList) return;
+
+        // Configuration via les attributs HTML data- (ou valeurs par défaut)
+        this.speed = parseFloat(this.container.getAttribute('data-speed')) || 120;
+        this.direction = this.container.getAttribute('data-direction') || 'left';
+        this.gap = parseInt(this.container.getAttribute('data-gap')) || 32;
+        this.logoHeight = parseInt(this.container.getAttribute('data-logo-height')) || 28;
+        this.fadeColor = this.container.getAttribute('data-fade-color');
+        this.hoverSpeed = 0; // Vitesse cible quand survolé (0 = pause)
+
+        this.isVertical = this.direction === 'up' || this.direction === 'down';
+        this.isHovered = false;
+        
+        // Variables d'animation
+        this.offset = 0;
+        this.velocity = 0;
+        this.lastTimestamp = null;
+        this.rafId = null;
+        this.seqSize = 0;
+
+        this.init();
+    }
+
+    init() {
+        // Appliquer les variables CSS personnalisées
+        this.container.style.setProperty('--logoloop-gap', `${this.gap}px`);
+        this.container.style.setProperty('--logoloop-logoHeight', `${this.logoHeight}px`);
+        if (this.fadeColor) {
+            this.container.style.setProperty('--logoloop-fadeColor', this.fadeColor);
+        }
+
+        // Déterminer la vitesse cible initiale
+        const magnitude = Math.abs(this.speed);
+        const directionMultiplier = this.isVertical 
+            ? (this.direction === 'up' ? 1 : -1) 
+            : (this.direction === 'left' ? 1 : -1);
+        this.targetVelocity = magnitude * directionMultiplier * (this.speed < 0 ? -1 : 1);
+
+        // Attendre que les images soient chargées pour calculer les dimensions exactes
+        this.waitForImages().then(() => {
+            this.setupCopies();
+            this.startAnimation();
+            
+            // Événements de Redimensionnement et Survol
+            window.addEventListener('resize', () => this.setupCopies());
+            this.track.addEventListener('mouseenter', () => this.isHovered = true);
+            this.track.addEventListener('mouseleave', () => this.isHovered = false);
+        });
+    }
+
+    waitForImages() {
+        const images = this.originalList.querySelectorAll('img');
+        if (images.length === 0) return Promise.resolve();
+
+        const promises = Array.from(images).map(img => {
+            if (img.complete) return Promise.resolve();
+            return new Promise(resolve => {
+                img.addEventListener('load', resolve, { once: true });
+                img.addEventListener('error', resolve, { once: true });
+            });
+        });
+        return Promise.all(promises);
+    }
+
+    setupCopies() {
+        // Nettoyer les anciennes copies si existantes
+        const lists = this.track.querySelectorAll('.logoloop__list');
+        lists.forEach((list, index) => {
+            if (index > 0) list.remove();
+        });
+
+        // Calculer la taille d'une séquence complète
+        const rect = this.originalList.getBoundingClientRect();
+        this.seqSize = Math.ceil(this.isVertical ? rect.height : rect.width);
+        if (this.seqSize <= 0) return;
+
+        // Calculer le nombre de copies nécessaires pour remplir l'écran + marge de sécurité (headroom)
+        const containerSize = this.isVertical 
+            ? (this.container.parentElement?.clientHeight || window.innerHeight)
+            : this.container.clientWidth;
+
+        if (this.isVertical && this.container.parentElement) {
+            this.container.style.height = `${this.container.parentElement.clientHeight}px`;
+        }
+
+        const copiesNeeded = Math.ceil(containerSize / this.seqSize) + 2;
+        const finalCopyCount = Math.max(2, copiesNeeded);
+
+        // Dupliquer le nœud de liste
+        for (let i = 1; i < finalCopyCount; i++) {
+            const clone = this.originalList.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            this.track.appendChild(clone);
+        }
+    }
+
+    startAnimation() {
+        const animate = (timestamp) => {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return;
+            }
+
+            if (this.lastTimestamp === null) this.lastTimestamp = timestamp;
+            const deltaTime = Math.max(0, timestamp - this.lastTimestamp) / 1000;
+            this.lastTimestamp = timestamp;
+
+            const target = this.isHovered ? this.hoverSpeed : this.targetVelocity;
+            const easingFactor = 1 - Math.exp(-deltaTime / 0.25);
+            this.velocity += (target - this.velocity) * easingFactor;
+
+            if (this.seqSize > 0) {
+                this.offset += this.velocity * deltaTime;
+                this.offset = ((this.offset % this.seqSize) + this.seqSize) % this.seqSize;
+
+                const transformValue = this.isVertical
+                    ? `translate3d(0, ${-this.offset}px, 0)`
+                    : `translate3d(${-this.offset}px, 0, 0)`;
+                this.track.style.transform = transformValue;
+            }
+
+            this.rafId = requestAnimationFrame(animate);
+        };
+
+        this.rafId = requestAnimationFrame(animate);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.logoloop').forEach(el => new VanillaLogoLoop(el));
+});
+
 /* ---------------------------------------- */
 
 const langSwitch = document.getElementById('langSwitch');
