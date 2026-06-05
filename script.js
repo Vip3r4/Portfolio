@@ -254,7 +254,7 @@ const translations = {
         projets_h2: 'My Projects',
         projets_desc: 'Every project is built to meet the real needs of a community or its staff. Here\'s what I\'ve built.',
         projet1_h3: 'Delta Foundation No RP Website',
-        projet1_desc: 'Showcase website for my No RP server on SCP:SL - wiki, dev-logs, contact, and about page.',
+        projet1_desc: 'Complete website with game ↔ database synchronization : player dashboard, real-time stats, Steam/Discord link, leaderboards, synchronized warns/bans, staff panel, enhanced security.',
         projet2_h3: 'Motor Co. FiveM Website',
         projet2_desc: 'Showcase website for a car dealership on FiveM - catalog, contact, about page and admin panel with login to manage vehicles without touching the code.',
         projet3_h3: 'Delta DarkRP Site Plugin',
