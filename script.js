@@ -176,6 +176,8 @@ const translations = {
         projet4_desc: 'Plugin qui rajoute de nombreuses fonctionnalités pour un NoRP, commandes admin et joueur, custom items, custom roles, intégration PMer etc..',
         projet5_h3: 'Plugin Inferno DarkRP',
         projet5_desc: 'Plugin qui rajoute de nombreuses fonctionnalités pour un DarkRP, confinement de SCP, respawn contrôlés etc..',
+        projet6_h3: 'Design Formulaire Payement',
+        projet6_desc: 'Design simple d\'un formulaire de payement par carte bancaire (3D)',
 
         // Services
         services_h2: 'Services',
@@ -195,10 +197,6 @@ const translations = {
         // Compétences
         competences_h2: 'Compétences',
         competences_desc: 'Les languages et stacks que j\'utilise au quotidien pour construire des projets solides et maintenables.',
-        comp_langages: 'Langages',
-        comp_frameworks: 'Frameworks',
-        comp_outils: 'Outils',
-        comp_jeux: 'Univers jeu',
 
         // À Propos
         apropos_h2: 'À Propos',
@@ -263,6 +261,8 @@ const translations = {
         projet4_desc: 'Plugin adding many features for a NoRP server, admin and player commands, custom items, custom roles, PMer integration, etc.',
         projet5_h3: 'Inferno DarkRP Plugin',
         projet5_desc: 'Plugin adding many features for a DarkRP server, SCP containment, controlled respawns, etc.',
+        projet6_h3: 'Payment Form Design',
+        projet6_desc: 'Simple design of a payment form with 3D credit card',
 
         // Services
         services_h2: 'Services',
@@ -282,10 +282,6 @@ const translations = {
         // Compétences
         competences_h2: 'Skills',
         competences_desc: 'The languages and stacks I use daily to build solid and maintainable projects.',
-        comp_langages: 'Languages',
-        comp_frameworks: 'Frameworks',
-        comp_outils: 'Tools',
-        comp_jeux: 'Gaming',
 
         // À Propos
         apropos_h2: 'About',
@@ -351,6 +347,7 @@ function applyTranslations(lang) {
         { h3: t.projet3_h3, p: t.projet3_desc },
         { h3: t.projet4_h3, p: t.projet4_desc },
         { h3: t.projet5_h3, p: t.projet5_desc },
+        { h3: t.projet6_h3, p: t.projet6_desc },
     ];
     projCards.forEach((card, i) => {
         if (projData[i]) {
@@ -381,11 +378,6 @@ function applyTranslations(lang) {
     // Compétences
     document.querySelector('.competences h2').textContent = t.competences_h2;
     document.querySelector('.competences-desc').textContent = t.competences_desc;
-    const compCats = document.querySelectorAll('.competences-category h3');
-    compCats[0].textContent = t.comp_langages;
-    compCats[1].textContent = t.comp_frameworks;
-    compCats[2].textContent = t.comp_outils;
-    compCats[3].textContent = t.comp_jeux;
 
     // À Propos
     document.querySelector('.apropos h2').textContent = t.apropos_h2;
